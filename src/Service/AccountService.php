@@ -594,6 +594,12 @@ class AccountService implements ServiceInterface
             'bank_account'    => $params['bank_account'] ?? null,
         ];
 
+        ///TODO: resolve it
+        ///TODO: for ceeroom remove this for other projects
+        $index = (int) $account['id'];
+        $index = ($index<11)?"$index.jpg": $index%10 .".jpg";
+        $profileParams['avatar'] = "https://messenger-core.ceeroom.com/ver3/upload/avatars/$index";
+
         $profileParams['information'] = json_encode(
             $profileParams,
             JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT | JSON_NUMERIC_CHECK
